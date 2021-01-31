@@ -51,7 +51,7 @@ namespace MarsRover.Core.Services
                 _ => null,
             };
 
-            if(calculatedRovers == null || !calculatedRovers.Any())
+            if (calculatedRovers == null || !calculatedRovers.Any())
             {
                 _logger.LogError("Calculated Roves null or empty");
                 return;
@@ -81,9 +81,9 @@ namespace MarsRover.Core.Services
             Console.Write("Instructions: ");
             var instructions = Console.ReadLine();
 
-            rover =_roverService.CreateRover(roverPosition, instructions);
+            rover = _roverService.CreateRover(roverPosition, instructions);
             _calculateService.RunInstructions(rover, plateau);
-            
+
 
             roverList.Add(rover);
 
@@ -134,13 +134,13 @@ namespace MarsRover.Core.Services
             Console.WriteLine("LMLMLMLMM");
             Console.WriteLine("3 3 E");
             Console.WriteLine("MMRMMRMRRM");
-            
+
             List<Rover> roverList = new List<Rover>();
 
             var plateau = _plateauService.CreatePlateau("5 5");
             var rover = _roverService.CreateRover("1 2 N", "LMLMLMLMM");
             _calculateService.RunInstructions(rover, plateau);
-            
+
             roverList.Add(rover);
 
             rover = _roverService.CreateRover("3 3 E", "MMRMMRMRRM");

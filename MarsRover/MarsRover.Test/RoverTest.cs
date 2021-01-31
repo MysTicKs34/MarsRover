@@ -16,6 +16,7 @@ namespace MarsRover.Test
         {
             serviceProvider = new ServiceCollection()
             .AddSingleton<IRoverService, RoverService>()
+            .AddLogging()
             .BuildServiceProvider();
         }
 

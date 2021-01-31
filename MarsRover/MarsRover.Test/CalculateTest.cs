@@ -1,10 +1,8 @@
 ﻿using MarsRover.Core.Abstraction;
 using MarsRover.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using System;
-using Assert = NUnit.Framework.Assert;
 
 namespace MarsRover.Test
 {
@@ -19,6 +17,7 @@ namespace MarsRover.Test
             .AddSingleton<IPlateauService, PlateauService>()
             .AddSingleton<IRoverService, RoverService>()
             .AddSingleton<ICalculateService, CalculateService>()
+            .AddLogging()
             .BuildServiceProvider();
         }
 
@@ -27,7 +26,7 @@ namespace MarsRover.Test
         {
         }
 
-        [TestMethod]
+        [Test]
         public void RunIstruction_RoverAndPlateau_MoveRover()
         {
             var _plateauService = serviceProvider.GetService<IPlateauService>();
@@ -38,7 +37,7 @@ namespace MarsRover.Test
             var rover = _roverService.CreateRover("1 2 N", "LMLMLMLMM");
             _calculateService.RunInstructions(rover, plateau);
 
-            Assert.AreEqual("1 3 N",$"{rover.LastPosition.X} {rover.LastPosition.Y} {rover.LastPosition.Orientation}");
+            Assert.AreEqual("1 3 N", $"{rover.LastPosition.X} {rover.LastPosition.Y} {rover.LastPosition.Orientation}");
         }
 
         [Test]
