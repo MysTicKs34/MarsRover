@@ -1,7 +1,6 @@
 ﻿using MarsRover.Core.Abstraction;
 using MarsRover.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using System;
 
@@ -17,7 +16,6 @@ namespace MarsRover.Test
         {
             serviceProvider = new ServiceCollection()
             .AddSingleton<IPlateauService, PlateauService>()
-            .AddLogging(l => l.AddConsole())
             .BuildServiceProvider();
         }
 
